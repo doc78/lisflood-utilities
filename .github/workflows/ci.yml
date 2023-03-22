@@ -15,6 +15,7 @@ jobs:
         python-version: "3.7"
     - name: Install dependencies
       run: |
+        sudo add-apt-repository ppa:ubuntugis/ppa
         sudo apt-get update
         sudo apt-get install libgdal-dev gdal-bin
         export CPLUS_INCLUDE_PATH=/usr/include/gdal
