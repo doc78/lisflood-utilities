@@ -27,6 +27,6 @@ jobs:
         conda install -c conda-forge eccodes --name base
     - name: Test with pytest
       run: |
-        conda install pytest pytest-cov
+        conda install -c conda-forge pytest pytest-cov
         pip install -r requirements.txt
         pytest
