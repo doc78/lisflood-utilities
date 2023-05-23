@@ -17,33 +17,15 @@ jobs:
     - name: Conda info
       shell: bash -el {0}
       run: conda info
-    - name: Install dependencies
+    - name: Install python and gcc
       shell: bash -el {0}
       run: |
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo apt-get update
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo apt-get install --reinstall build-essential
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo apt-get install libstdc++6
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo apt-get update
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo apt-get upgrade
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        sudo apt-get dist-upgrade
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        conda install -c conda-forge python=3.7 libgcc-ng 
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
+        conda install -c conda-forge python=3.7
         conda install -c conda-forge gcc=12.1.0
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
     - name: Install dependencies
       shell: bash -el {0}
       run: |
-        strings /usr/share/miniconda/envs/test/lib/libstdc++.so.6 | grep GLIBCXX
-        conda install -c conda-forge gdal==3.5.0 eccodes 
+        conda install -c conda-forge gdal eccodes pcraster
         pip install -r requirements.txt
     - name: Test with pytest
       shell: bash -el {0}
