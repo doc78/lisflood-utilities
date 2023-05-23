@@ -21,7 +21,12 @@ jobs:
       shell: bash -el {0}
       run: |
         sudo apt-get update
-        sudo apt install build-essential
+        sudo apt-get install --reinstall build-essential
+        sudo apt-get install libstdc++6
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
+        sudo apt-get update
+        sudo apt-get upgrade
+        sudo apt-get dist-upgrade
         conda install -c conda-forge python=3.7 libgcc-ng gdal==3.5.0 eccodes 
         pip install -r requirements.txt
     - name: Test with pytest
