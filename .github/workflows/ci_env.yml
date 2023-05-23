@@ -30,9 +30,5 @@ jobs:
     - name: Test with pytest
       shell: bash -el {0}
       run: |
-        gdal-config --version
-        pip list
-        conda list
-        python -c "from osgeo import gdal; print(gdal.__version__)"
         conda install -c conda-forge pytest pytest-cov
         pytest
