@@ -1,24 +1,29 @@
-name: Lisflood Utilities using env file and ubuntu-20.04
+name: Lisflood Utilities Unit Tests
 
 on: [push]
 
 jobs:
-  build-linux:
+  tests:
     runs-on: ubuntu-20.04
     strategy:
       max-parallel: 5
 
     steps:
     - uses: actions/checkout@v3
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: 3.7
+    - name: Conda info
+      shell: bash -el {0}
+      run: conda info
     - name: Install dependencies
+      shell: bash -el {0}
       run: |
-        conda install -c conda-forge python=3.7 gdal==3.5.0 eccodes --name base
+        conda install -c conda-forge python=3.7 gdal==3.5.0 eccodes 
         pip install -r requirements.txt
     - name: Test with pytest
+      shell: bash -el {0}
       run: |
         gdal-config --version
         pip list
